@@ -8,7 +8,7 @@ const News = (props) => {
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
-    
+
     const updateNews = async () => {
         const url = `https://newsapi.org/v2/top-headlines?country=${props.country}&category=${props.category}&apiKey=${props.apiKey}&page=${page}&pageSize=${props.pageSize}`;
         setLoading(true);
@@ -18,7 +18,7 @@ const News = (props) => {
         setTotalResults(parsedData.totalResults);
         setLoading(false);
     }
-    
+
     useEffect(() => {
         updateNews();
         document.title = `NewsWire - ${props.category[0].toUpperCase() + props.category.slice(1)}`;
@@ -37,7 +37,7 @@ const News = (props) => {
 
     return (
         <div className="container my-3">
-            <h3 className="text-center" id="mainHeading" style={{ fontSize: "35px", fontWeight: 'bold' }}>Top Headlines in {props.category[0].toUpperCase() + props.category.slice(1)}</h3>
+            <h3 className="text-center" id="mainHeading" style={{ fontSize: "35px", fontWeight: 'bold', marginTop: "70px" }}>Top Headlines in {props.category[0].toUpperCase() + props.category.slice(1)}</h3>
             {loading && <Spinner />}
             <div className="row">
                 {!loading && articles.map((element) => {
