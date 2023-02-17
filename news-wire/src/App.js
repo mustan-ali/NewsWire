@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Component } from 'react'
+import React from 'react'
 import Navbar from './components/Navbar';
 import News from './components/News';
 import {
@@ -8,26 +8,24 @@ import {
     Route
 } from "react-router-dom";
 
+const App = () => {
+    const apiKey = process.env.REACT_APP_NEWS_API_KEY;
+    const pageSize = 12;
 
-export default class App extends Component {
-    apiKey = process.env.REACT_APP_NEWS_API_KEY;
-    pageSize = 12;
-    
-    render() {
-        return <div>
-            <Router>
-                <Navbar />
-                <Routes>
-                    <Route exact path="/" element={<News apiKey={this.apiKey} key="general" pageSize={this.pageSize} country="us" category="general" />} />
-                    <Route exact path="/technology" element={<News apiKey={this.apiKey} key="technology" pageSize={this.pageSize} country="us" category="technology" />} />
-                    <Route exact path="/business" element={<News apiKey={this.apiKey} key="business" pageSize={this.pageSize} country="us" category="business" />} />
-                    <Route exact path="/sports" element={<News apiKey={this.apiKey} key="sports" pageSize={this.pageSize} country="us" category="sports" />} />
-                    <Route exact path="/entertainment" element={<News apiKey={this.apiKey} key="entertainment" pageSize={this.pageSize} country="us" category="entertainment" />} />
-                    <Route exact path="/science" element={<News apiKey={this.apiKey} key="science" pageSize={this.pageSize} country="us" category="science" />} />
-                    <Route exact path="/health" element={<News apiKey={this.apiKey} key="health" pageSize={this.pageSize} country="us" category="health" />} />
-                </Routes>
-            </Router>
-        </div>
-
-    }
+    return <div>
+        <Router>
+            <Navbar />
+            <Routes>
+                <Route exact path="/" element={<News apiKey={apiKey} key="general" pageSize={pageSize} country="us" category="general" />} />
+                <Route exact path="/technology" element={<News apiKey={apiKey} key="technology" pageSize={pageSize} country="us" category="technology" />} />
+                <Route exact path="/business" element={<News apiKey={apiKey} key="business" pageSize={pageSize} country="us" category="business" />} />
+                <Route exact path="/sports" element={<News apiKey={apiKey} key="sports" pageSize={pageSize} country="us" category="sports" />} />
+                <Route exact path="/entertainment" element={<News apiKey={apiKey} key="entertainment" pageSize={pageSize} country="us" category="entertainment" />} />
+                <Route exact path="/science" element={<News apiKey={apiKey} key="science" pageSize={pageSize} country="us" category="science" />} />
+                <Route exact path="/health" element={<News apiKey={apiKey} key="health" pageSize={pageSize} country="us" category="health" />} />
+            </Routes>
+        </Router>
+    </div>
 }
+
+export default App;
